@@ -1,5 +1,7 @@
 var mongoose = require("mongoose");
 var bcrypt = require("bcrypt");
+var contact = require("./contacts");
+
 var UserSchema = new mongoose.Schema({
 	email: {
 		type: String,
@@ -15,7 +17,8 @@ var UserSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: true
-	}
+	},
+	contacts: [contact.schema]
 });
 
 UserSchema.statics.authenticate = function(email, password, callback) {
